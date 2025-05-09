@@ -1,0 +1,21 @@
+import { HomeIcon, SearchIcon, PlusCircleIcon, ChatIcon, UserIcon } from 'lucide-react';
+
+export default function BottomNav() {
+  const items = [
+    { icon: HomeIcon,   label: 'Home'   },
+    { icon: SearchIcon, label: 'Search' },
+    { icon: PlusCircleIcon, label: 'Post'   },
+    { icon: ChatIcon,   label: 'Chat'   },
+    { icon: UserIcon,   label: 'Profile'},
+  ];
+  return (
+    <nav className="fixed bottom-0 left-0 w-full bg-white border-t flex justify-around py-2">
+      {items.map(({ icon: Icon, label }) => (
+        <div key={label} className="flex flex-col items-center text-gray-500 text-sm">
+          <Icon size={20} />
+          <span>{label}</span>
+        </div>
+      ))}
+    </nav>
+  );
+}
