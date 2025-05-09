@@ -1,0 +1,53 @@
+import React, { useState } from 'react';
+import TabMenu from '../components/TabMenu';
+import BottomNav from '../components/BottomNav';
+import Input from '../components/Input';
+
+const tabs = ['Electronics', 'Apparel', 'Home', 'Baby'];
+
+export default function HomePage() {
+  const [activeTab, setActiveTab] = useState(tabs[0]);
+  const sections = [
+    'Featured Second-hand Items',
+    'Popular Second-hand Picks',
+    'Curated Second-hand Electronics',
+    'Stylish Second-hand Apparel'
+  ];
+
+  return (
+    <div className="pb-16 bg-white">
+      <div className="p-4 space-y-4">
+        <Input placeholder="Search for products" />
+        <TabMenu tabs={tabs} active={activeTab} onChange={setActiveTab} />
+      </div>
+
+      <div className="w-full h-40 mb-4">
+        <img
+          src="/demo-banner.jpg"
+          alt="banner"
+          className="object-cover w-full h-full"
+        />
+      </div>
+
+      <div className="px-4 space-y-6">
+        {sections.map(title => (
+          <div key={title} className="flex items-center space-x-4">
+            <img
+              src="/demo-thumb.jpg"
+              alt={title}
+              className="w-16 h-16 rounded-lg object-cover"
+            />
+            <div>
+              <h3 className="font-medium text-lg">{title}</h3>
+              <p className="text-sm text-gray-500">
+                This is a brief description of the item.
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <BottomNav />
+    </div>
+  );
+}
